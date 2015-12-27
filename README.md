@@ -1,4 +1,4 @@
-# JSDK
+# jsPOS
 JavaScript ISO8583.
 
 # install
