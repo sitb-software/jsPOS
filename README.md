@@ -6,6 +6,35 @@ JavaScript ISO8583. JavaScript version of [JPOS](http://jpos.org).
     npm install jspos --save
 
 
+# Custom packager
+
+```js
+    import { ISOBasePackager, packer } from 'jspos';
+
+    let { IFB_NUMERIC, IFB_BITMAP, IFB_LLNUM, IFB_LLLNUM, IF_CHAR, IFB_LLCHAR, IFB_LLLCHAR, IFB_BINARY, IFB_LLBINARY, IFB_LLLBINARY, IFB_AMOUNT } = packer;
+
+    let fld = [
+        /*000*/ new IFB_NUMERIC(4, "Message Type Indicator", true),
+        /*001*/ new IFB_BITMAP(8, "Bitmap"),
+        /*002*/ new IFB_LLNUM(19, "Primary Account number", pad),
+        /*003*/ new IFB_NUMERIC(6, "Processing Code", pad),
+        /*004*/ new IFB_NUMERIC(12, "Amount, Transaction", pad),
+        /*005*/ new IFB_NUMERIC(12, "Amount, Reconciliation", pad),
+        /*006*/ new IFB_NUMERIC(12, "Amount, Cardholder billing", pad),
+        /*007*/ new IFB_NUMERIC(10, "Date and time, transmission", pad),
+        /*008*/ new IFB_NUMERIC(8, "Amount, Cardholder billing fee", pad)
+    ];
+
+    class MyPackager extends ISOBasePackager{
+         constructor() {
+            super();
+              this.setFieldPackager(fld);
+         }
+    }
+
+    export default new MyPackager();
+```
+
 # Examples
 
     import Packager from './MyPackager';
