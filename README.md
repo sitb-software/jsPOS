@@ -1,15 +1,15 @@
 # jsPOS
-JavaScript ISO8583.
+JavaScript ISO8583. JavaScript version of [JPOS](http://jpos.org).
 
-# install
+# Installation
 
     npm install jspos --save
 
-# example
+
+# Examples
 
     import Packager from './MyPackager';
-    import ISOMsg from '../src/ISOMsg';
-    import ISOUtil from '../src/ISOUtil';
+    import { ISOUtil, ISOMsg } from 'jspos';
 
 
     let msg:ISOMsg = Packager.createISOMsg();
