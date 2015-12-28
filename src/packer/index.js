@@ -9,7 +9,7 @@ import IFB_BINARY from './IFB_BINARY';
 import IFB_BITMAP from './IFB_BITMAP';
 import IFB_LLBINARY from './IFB_LLBINARY';
 import IFB_LLCHAR from './IFB_LLCHAR';
-import IFB_LLLBINARY from './IFB_LLBINARY';
+import IFB_LLLBINARY from './IFB_LLLBINARY';
 import IFB_LLLCHAR from './IFB_LLCHAR';
 import IFB_LLLNUM from './IFB_LLLNUM';
 import IFB_LLNUM from './IFB_LLNUM';
