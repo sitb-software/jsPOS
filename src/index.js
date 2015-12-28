@@ -28,7 +28,7 @@ import Prefixer from './Prefixer';
 import RightPadder from './RightPadder';
 import RightTPadder from './RightTPadder';
 
-import packer from './packer';
+import * as packer from './packer';
 
 
 export {
