@@ -1,6 +1,6 @@
 {
   "name": "jspos",
-  "version": "0.0.1-Alpha",
+  "version": "0.0.2-Alpha",
   "description": "JavaScript ISO8583 ,JavaScript version of JPOS",
   "main": "lib/index.js",
   "scripts": {
@@ -15,6 +15,7 @@
   "keywords": [
     "JavaScript",
     "js",
+    "jspos",
     "iso8583",
     "8583",
     "jPOS",
