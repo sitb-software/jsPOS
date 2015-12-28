@@ -48,7 +48,7 @@ JavaScript ISO8583. JavaScript version of [JPOS](http://jpos.org).
     msg.setField(41, '00000764');
     msg.setField(42, '111000001111002');
     msg.setField(60, '00000001003');
-    msg.setStrField(63, '001');
+    msg.setField(63, '001');
     console.log(ISOUtil.hexString(msg.pack()));
 
     let msgStr = '08000020000000C00012000105303030303037363438343831303030353831323630303200110000000100300003303031';
