@@ -12,7 +12,7 @@ JavaScript ISO8583. JavaScript version of [JPOS](http://jpos.org).
     import { ISOBasePackager, packer } from 'jspos';
 
     let { IFB_NUMERIC, IFB_BITMAP, IFB_LLNUM, IFB_LLLNUM, IF_CHAR, IFB_LLCHAR, IFB_LLLCHAR, IFB_BINARY, IFB_LLBINARY, IFB_LLLBINARY, IFB_AMOUNT } = packer;
-
+    const pad = false;
     let fld = [
         /*000*/ new IFB_NUMERIC(4, "Message Type Indicator", true),
         /*001*/ new IFB_BITMAP(8, "Bitmap"),
