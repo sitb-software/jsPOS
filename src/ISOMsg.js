@@ -64,7 +64,7 @@ class ISOMsg extends ISOComponent {
         }
     }
 
-    setStrField(fldno:Number, value:String) {
+    setField(fldno:Number, value) {
         if (value != null) {
             if (!(this.packager instanceof ISOBasePackager)) {
                 this.set(new ISOField(fldno, value));
