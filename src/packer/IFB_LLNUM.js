@@ -4,9 +4,9 @@
  */
 
 import ISOStringFieldPackager from './ISOStringFieldPackager';
-import NullPadder from '../NullPrefixer';
-import BCDInterpreter from '../BCDInterpreter';
+import NullPadder from '../NullPadder';
 import BcdPrefixer from '../BcdPrefixer';
+import BCDInterpreter from '../BCDInterpreter';
 
 class IFB_LLNUM extends ISOStringFieldPackager {
 
@@ -14,6 +14,7 @@ class IFB_LLNUM extends ISOStringFieldPackager {
         super(len, description, NullPadder,
             isLeftPadded ? BCDInterpreter.LEFT_PADDED : BCDInterpreter.RIGHT_PADDED,
             BcdPrefixer.LL);
+        this.checkLength(len, 99);
     }
 
 

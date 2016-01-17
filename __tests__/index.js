@@ -13,6 +13,7 @@ let msg:ISOMsg = Packager.createISOMsg();
 
 msg.setMTI('0800');
 msg.setField(11, '000105');
+msg.setField(32, '14002244');
 msg.setField(41, '00000764');
 msg.setField(42, '111000001111002');
 msg.setField(60, '00000001003');

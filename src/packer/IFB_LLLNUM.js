@@ -10,7 +10,7 @@ import BCDInterpreter from '../BCDInterpreter';
 
 class IFB_LLLNUM extends ISOStringFieldPackager {
 
-    constructor(len:Number, description:String, isLeftPadded) {
+    constructor(len:Number, description:String, isLeftPadded:Boolean) {
         super(len, description, NullPadder,
             isLeftPadded ? BCDInterpreter.LEFT_PADDED : BCDInterpreter.RIGHT_PADDED,
             BcdPrefixer.LLL);
