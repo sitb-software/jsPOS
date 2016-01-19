@@ -45,6 +45,37 @@ class ISOUtil {
     }
 
     /**
+     * Converts an ASCII representation of a Bitmap field
+     * into a Java BitSet
+     * @param b - hex representation
+     * @param offset - starting offset
+     * @param maxBits - max number of bits (supports 8, 16, 24, 32, 48, 52, 64,.. 128 or 192)
+     * @return java BitSet object
+     */
+    static hex2BitSet (b:Array, offset: Number, maxBits: Number): BitSet {
+        let len = maxBits > 64 ? 
+            (Character.forDigit(b[offset], 16) & 0x08) === 8 ? 128 : 64 
+                : maxBits;
+
+        if (len > 64 && maxBits > 128 && b.length > offset + 16 &&
+            (Character.forDigit(b[offset + 16], 16) & 0x08) === 8)
+        {
+            len = 192;
+        }
+
+        let bmap: BitSet = new BitSet(len);
+        for (let i = 0; i < len; i++) {
+            let digit = parseInt(String.fromCharCode(b[offset + (i >> 2)]), 16);
+            if ((digit & 0x08 >> i % 4) > 0) {
+                bmap.set(i + 1);
+                if (i === 65 && maxBits > 128)
+                    len = 192;
+            }
+        }
+        return bmap;
+    }
+
+    /**
      * 转换一个字节数组为十六进制字符串
      * @param msg 二进制数组
      * @returns {string} 十六进制字符串
@@ -122,9 +153,9 @@ class ISOUtil {
 
     static bitSet2byte(b:BitSet, bytes:Number):Array {
         let len = bytes * 8;
-
         let d = new Array(bytes);
         for (let i = 0; i < len; i++) {
+            d[i >> 3] |= 0x0; // set bit 0 as default
             if (b.get(i + 1)) {
                 d[i >> 3] |= 0x80 >> i % 8;
             }

@@ -7,6 +7,7 @@ import ISOFieldPackager from './ISOFieldPackager';
 import Prefixer from '../Prefixer';
 import BinaryInterpreter from '../BinaryInterpreter';
 import ISOComponent from '../ISOComponent';
+import ISOBinaryField from '../ISOBinaryField';
 
 
 class ISOBinaryFieldPackager extends ISOFieldPackager {
@@ -44,14 +45,14 @@ class ISOBinaryFieldPackager extends ISOFieldPackager {
         if (packedLength === 0 && data.length != this.getLength()) {
             throw Error(`Binary data length not the same as the packager length (${data.length}/${this.getLength()})`);
         }
-        let ret = new Array[this.interpreter.getPackedLength(data.length) + packedLength];
+        let ret = new Array(this.interpreter.getPackedLength(data.length) + packedLength);
         this.prefixer.encodeLength(data.length, ret);
         this.interpreter.interpret(data, ret, packedLength);
         return ret;
     }
 
 
-    unpack(field:ISOComponent, msg:Array, offset:Number):Number {
+    unpack(field:ISOComponent, b:Array, offset:Number):Number {
         let len = this.prefixer.decodeLength(b, offset);
         if (len === -1) {
             len = this.getLength();

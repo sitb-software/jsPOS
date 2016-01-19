@@ -1,18 +1,18 @@
 /**
- * @author Sean sean.snow@live.com
- * @date 2015/12/25
+ * @author Bruno bruno.camargos@gmail.com
+ * @date 2016/01/15
  */
-
 
 import ISOStringFieldPackager from './ISOStringFieldPackager';
 import NullPadder from '../NullPadder';
-import BcdPrefixer from '../BcdPrefixer';
+import AsciiPrefixer from '../AsciiPrefixer';
 import AsciiInterpreter from '../AsciiInterpreter';
 
-class IFB_LLCHAR extends ISOStringFieldPackager {
+class IFA_LLNUM extends ISOStringFieldPackager {
 
     constructor(len:Number, description:String) {
-        super(len, description, NullPadder, AsciiInterpreter, BcdPrefixer.LL);
+        super(len, description, NullPadder, AsciiInterpreter, AsciiPrefixer.LL);
+        this.checkLength(len, 99);
     }
 
     setLength(len:Number) {
@@ -21,4 +21,4 @@ class IFB_LLCHAR extends ISOStringFieldPackager {
     }
 }
 
-export default IFB_LLCHAR;
+export default IFA_LLNUM;
