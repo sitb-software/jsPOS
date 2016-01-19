@@ -4,7 +4,9 @@
  */
 
 
+import AsciiHexInterpreter from './AsciiHexInterpreter';
 import AsciiInterpreter from './AsciiInterpreter';
+import AsciiPrefixer from './AsciiPrefixer';
 import BCDInterpreter from './BCDInterpreter';
 import BcdPrefixer from './BcdPrefixer';
 import BinaryInterpreter from './BinaryInterpreter';
@@ -32,7 +34,9 @@ import * as packer from './packer';
 
 
 export {
+    AsciiHexInterpreter,
     AsciiInterpreter,
+    AsciiPrefixer,
     BCDInterpreter,
     BcdPrefixer,
     BinaryInterpreter,
