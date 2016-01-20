@@ -1,6 +1,6 @@
 {
   "name": "jspos",
-  "version": "0.0.7-Alpha",
+  "version": "0.0.8-RELEASE",
   "description": "JavaScript ISO8583 ,JavaScript version of JPOS",
   "main": "lib/index.js",
   "scripts": {
