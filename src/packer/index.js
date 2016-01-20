@@ -4,7 +4,6 @@
  */
 
 import IF_CHAR from './IF_CHAR';
-import IF_CHAR from './IF_CHAR';
 import IFA_AMOUNT from './IFA_AMOUNT';
 import IFA_BINARY from './IFA_BINARY';
 import IFA_BITMAP from './IFA_BITMAP';
@@ -50,7 +49,7 @@ export {
     IFB_LLLNUM,
     IFB_LLNUM,
     IFB_NUMERIC,
-    ISOAmountFieldPackager
+    ISOAmountFieldPackager,
     ISOBinaryFieldPackager,
     ISOBitMapPackager,
     ISOFieldPackager,
