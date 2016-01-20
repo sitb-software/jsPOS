@@ -148,7 +148,6 @@ class ISOBasePackager extends ISOPackager {
             let bitmap = new ISOBitMap(-1);
             consumed += this.getBitMapfieldPackager().unpack(bitmap, b, consumed);
             bmap = bitmap.getValue();
-            console.log(bmap.toString());
             m.set(bitmap);
             maxField = Math.min(maxField, bmap.size());
         }

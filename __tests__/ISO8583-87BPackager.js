@@ -17,7 +17,7 @@ import IFB_LLLBINARY from '../src/packer/IFB_LLLBINARY';
 import IFB_AMOUNT from '../src/packer/IFB_AMOUNT';
 
 const pad = false;
-class MyPackager extends ISOBasePackager {
+class ISO858387BPackager extends ISOBasePackager {
 
     constructor() {
         super();
@@ -160,5 +160,5 @@ class MyPackager extends ISOBasePackager {
 
 }
 
-export default new MyPackager();
+export default new ISO858387BPackager();
 

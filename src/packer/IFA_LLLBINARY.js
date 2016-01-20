@@ -1,17 +1,17 @@
 /**
- * @author Sean sean.snow@live.com
- * @date 2015/12/25
+ * @author Bruno bruno.camargos@gmail.com
+ * @date 2016/01/18
  */
 
 import ISOBinaryFieldPackager from './ISOBinaryFieldPackager';
 import LiteralBinaryInterpreter from '../LiteralBinaryInterpreter';
-import BcdPrefixer from '../BcdPrefixer';
+import AsciiPrefixer from '../AsciiPrefixer';
 
-class IFB_LLLBINARY extends ISOBinaryFieldPackager {
+class IFA_LLLBINARY extends ISOBinaryFieldPackager {
 
     // 构造
     constructor(len:Number, description:String) {
-        super(len, description, LiteralBinaryInterpreter, BcdPrefixer.LLL);
+        super(len, description, LiteralBinaryInterpreter, AsciiPrefixer.LLL);
         this.checkLength(len, 999);
     }
 
@@ -22,4 +22,4 @@ class IFB_LLLBINARY extends ISOBinaryFieldPackager {
     }
 }
 
-export default IFB_LLLBINARY;
+export default IFA_LLLBINARY;
