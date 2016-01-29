@@ -4,7 +4,10 @@
  * @date 2015/12/24
  */
 import BitSet from 'jsdk/util/BitSet';
-import { Character } from 'jsdk';
+import {
+    Character
+}
+from 'jsdk';
 
 let hexStrings = new Array(256);
 for (let i = 0; i < 256; i++) {
@@ -23,7 +26,7 @@ class ISOUtil {
      * @param msg 16 进制字符串
      * @returns {Array} 二进制数组
      */
-    static hex2byte(msg:String) {
+    static hex2byte(msg: String) {
         let result = [];
 
         let length = msg.length;
@@ -52,14 +55,12 @@ class ISOUtil {
      * @param maxBits - max number of bits (supports 8, 16, 24, 32, 48, 52, 64,.. 128 or 192)
      * @return java BitSet object
      */
-    static hex2BitSet (b:Array, offset: Number, maxBits: Number): BitSet {
-        let len = maxBits > 64 ? 
-            (Character.forDigit(b[offset], 16) & 0x08) === 8 ? 128 : 64 
-                : maxBits;
+    static hex2BitSet(b: Array, offset: Number, maxBits: Number): BitSet {
+        let len = maxBits > 64 ?
+            (Character.forDigit(b[offset], 16) & 0x08) === 8 ? 128 : 64 : maxBits;
 
         if (len > 64 && maxBits > 128 && b.length > offset + 16 &&
-            (Character.forDigit(b[offset + 16], 16) & 0x08) === 8)
-        {
+            (Character.forDigit(b[offset + 16], 16) & 0x08) === 8) {
             len = 192;
         }
 
@@ -80,12 +81,36 @@ class ISOUtil {
      * @param msg 二进制数组
      * @returns {string} 十六进制字符串
      */
-    static hexString(msg:Array) {
+    // static internalHexString(msg: Array) {
+    //     let result = '';
+    //     msg.forEach(aB => {
+    //         result += hexStrings[parseInt(aB) & 0xFF];
+    //     });
+    //     return result;
+    // }
+
+    /**
+     * converts a byte array to hex string 
+     * (suitable for dumps and ASCII packaging of Binary fields
+     * @param b - byte array
+     * @param offset  - starting position
+     * @param len the length
+     * @return String representation
+     */
+    static hexString(b: Array, offset: Number, len: Number) {
         let result = '';
-        msg.forEach(aB => {
-            result += hexStrings[parseInt(aB & 0xFF)];
-        });
-        return result;
+        if (offset >= 0 && len > 0) {
+            len += offset;
+            for (let i = offset; i < len; i++) {
+                result += hexStrings[parseInt(b[i]) & 0xFF];
+            }
+        } else {
+            b.forEach(aB => {
+                result += hexStrings[parseInt(aB) & 0xFF];
+            });
+        }
+
+        return result
     }
 
     /**
@@ -96,7 +121,7 @@ class ISOUtil {
      * @param offset Where to start copying into.
      * @return Array BCD representation of the number
      */
-    static str2bcd(s:String, padLeft:Boolean, d:Array, offset:Number) {
+    static str2bcd(s: String, padLeft: Boolean, d: Array, offset: Number) {
         let len = s.length;
         let start = (len & 1) === 1 && padLeft ? 1 : 0;
         for (let i = start; i < len + start; i++) {
@@ -113,7 +138,7 @@ class ISOUtil {
      * @param padLeft - was padLeft packed?
      * @return the String representation of the number
      */
-    static bcd2str(b:Array, offset:Number, len:Number, padLeft:Boolean):String {
+    static bcd2str(b: Array, offset: Number, len: Number, padLeft: Boolean): String {
         let d = '';
         let start = (len & 1) == 1 && padLeft ? 1 : 0;
         for (let i = start; i < len + start; i++) {
@@ -127,7 +152,7 @@ class ISOUtil {
         return d.toString();
     }
 
-    static str2bytes(str:String):Array {
+    static str2bytes(str: String): Array {
         let ch, st, re = [];
         for (let i = 0; i < str.length; i++) {
             ch = str.charCodeAt(i);
@@ -142,7 +167,7 @@ class ISOUtil {
         return re;
     }
 
-    static byte2str(byte:Array, offset:Number, length:Number):String {
+    static byte2str(byte: Array, offset: Number, length: Number): String {
         let result = '';
         for (let i = offset; i < offset + length; i++) {
             result += String.fromCharCode(byte[i]);
@@ -151,7 +176,7 @@ class ISOUtil {
         return result;
     }
 
-    static bitSet2byte(b:BitSet, bytes:Number):Array {
+    static bitSet2byte(b: BitSet, bytes: Number): Array {
         let len = bytes * 8;
         let d = new Array(bytes);
         for (let i = 0; i < len; i++) {
@@ -169,7 +194,7 @@ class ISOUtil {
         return d;
     }
 
-    static byte2BitSet(b:Array, offset:Number, maxBits:Number):BitSet {
+    static byte2BitSet(b: Array, offset: Number, maxBits: Number): BitSet {
         let len = maxBits > 64 ? (b[offset] & 0x80) === 0x80 ? 128 : 64 : maxBits;
         if (maxBits > 128 && b.length > offset + 8 && (b[offset + 8] & 0x80) === 0x80) {
             len = 192;
@@ -190,7 +215,7 @@ class ISOUtil {
      * @param c - padding char
      * @return String padded string
      */
-    static padleft(s:String, len:Number, c:String):String {
+    static padleft(s: String, len: Number, c: String): String {
         s = s.trim();
         if (s.length > len) {
             throw Error(`invalid len ${s.length} / ${len}`);
@@ -204,7 +229,7 @@ class ISOUtil {
         return d;
     }
 
-    static zeropad(s:String, len:Number):String {
+    static zeropad(s: String, len: Number): String {
         return ISOUtil.padleft(s, len, '0');
     }
 
