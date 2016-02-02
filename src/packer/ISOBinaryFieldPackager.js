@@ -54,11 +54,13 @@ class ISOBinaryFieldPackager extends ISOFieldPackager {
 
     unpack(field:ISOComponent, b:Array, offset:Number):Number {
         let len = this.prefixer.decodeLength(b, offset);
+
         if (len === -1) {
             len = this.getLength();
         } else if (this.getLength() > 0 && len > this.getLength()) {
             throw Error(`Field length ${len} too long. Max: ${this.getLength()}`);
         }
+        
         let lenLen = this.prefixer.getPackedLength();
         let unpacked = this.interpreter.uninterpret(b, offset + lenLen, len);
         field.setValue(unpacked);

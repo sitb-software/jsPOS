@@ -15,18 +15,10 @@ class IFA_BITMAP extends ISOBitMapPackager {
     }
 
     pack(field: ISOComponent): Array {
-        //noinspection JSValidateTypes
         let b: BitSet = field.getValue();
         let len = this.getLength() >= 8 ? b.length() + 62 >> 6 << 3 : this.getLength();
-        
-        let hexString = ISOUtil.hexString(ISOUtil.bitSet2byte(b, len));
-       
-        var result = [];
-        for (var i = 0; i < hexString.length; i++) {
-            result.push(hexString.charCodeAt(i));
-        }
 
-        return result;
+        return ISOUtil.str2bytes(ISOUtil.hexString(ISOUtil.bitSet2byte(b, len)));
     }
 
     getMaxPackedLength() {

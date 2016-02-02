@@ -54,5 +54,5 @@ export {
     ISOBitMapPackager,
     ISOFieldPackager,
     ISOMsgFieldPackager,
-    ISOStringFieldPackager,
+    ISOStringFieldPackager
 };

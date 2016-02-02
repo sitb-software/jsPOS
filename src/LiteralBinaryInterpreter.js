@@ -15,7 +15,7 @@ class LiteralBinaryInterpreter extends BinaryInterpreter {
     }
 
     uninterpret(rawData:Array, offset:Number, length:Number):Array {
-        let ret = new Array[length];
+        let ret = new Array(length);
         Arrays.arraycopy(rawData, offset, ret, 0, length);
         return ret;
     }

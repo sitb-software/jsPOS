@@ -21,15 +21,17 @@ class AsciiHexInterpreter extends BinaryInterpreter {
     interpret(data: Array, b: Array, offset: Number) {
         for (let i = 0; i < data.length; i++) {
             b[offset + i * 2] = HEX_ASCII[(data[i] & 0xF0) >> 4];
+            // b[offset + i * 2] = ((data[i] & 0xF0) >> 4).toString(16).charCodeAt(0); /*it works too, but in lowercase*/
             b[offset + i * 2 + 1] = HEX_ASCII[data[i] & 0x0F];
+            // b[offset + i * 2 + 1] = (data[i] & 0x0F).toString(16).charCodeAt(0); /*it works too, but in lowercase*/
         }
     }
 
     uninterpret(rawData: Array, offset: Number, length: Number): Array {
         let d = new Array(length);
         for (let i = 0; i < length * 2; i++) {
-            let shift = i % 2 == 1 ? 0 : 4;
-            d[i >> 1] |= Character.forDigit(rawData[offset + i], 16) << shift;
+            let shift = i % 2 === 1 ? 0 : 4;
+            d[i >> 1] |= parseInt(String.fromCharCode(rawData[offset + i]), 16) << shift;
         }
         return d;
     }
