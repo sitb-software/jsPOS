@@ -22,7 +22,7 @@ class ISOStringFieldPackager extends ISOFieldPackager {
      * Sets the Padder.
      * @param padder The padder to use during packing and unpacking.
      */
-    setPadder(padder:Padder) {
+    setPadder(padder: Padder) {
         this.padder = padder;
     }
 
@@ -30,15 +30,15 @@ class ISOStringFieldPackager extends ISOFieldPackager {
      * Sets the Interpreter.
      * @param interpreter The interpreter to use in packing and unpacking.
      */
-    setInterpreter(interpreter:Interpreter) {
+    setInterpreter(interpreter: Interpreter) {
         this.interpreter = interpreter;
     }
 
-    setPrefixer(prefixer:Prefixer) {
+    setPrefixer(prefixer: Prefixer) {
         this.prefixer = prefixer;
     }
 
-    checkLength(len:Number, maxLength:Number) {
+    checkLength(len: Number, maxLength: Number) {
         if (len > maxLength) {
             throw Error(`Length ${len} too long for ${this.name}`);
         }
@@ -48,18 +48,13 @@ class ISOStringFieldPackager extends ISOFieldPackager {
     /**
      * Returns the prefixer's packed length and the interpreter's packed length.
      */
-    getMaxPackedLength():Number {
+    getMaxPackedLength(): Number {
         return this.prefixer.getPackedLength() + this.interpreter.getPackedLength(this.getLength());
     }
 
 
-    pack(field:ISOComponent):Array {
-        let data;
-        if (typeof field.getValue() === 'string') {
-            data = field.getValue();
-        } else {
-
-        }
+    pack(field: ISOComponent): Array {
+        let data = field.getValue().toString();
         if (data.length > this.getLength()) {
             throw Error(`Field length ${data.length} too long. Max: ${this.getLength()}`)
         }
@@ -71,7 +66,7 @@ class ISOStringFieldPackager extends ISOFieldPackager {
         return rawData;
     }
 
-    unpack(field:ISOComponent, msg:Array, offset:Number):Number {
+    unpack(field: ISOComponent, msg: Array, offset: Number): Number {
         let len = this.prefixer.decodeLength(msg, offset);
         if (len === -1) {
             // The prefixer doesn't know how long the field is, so use
