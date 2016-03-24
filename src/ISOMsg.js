@@ -82,6 +82,14 @@ class ISOMsg extends ISOComponent {
         }
     }
 
+    getMTI() {
+        return this.getValue(0);
+    }
+
+    getValue(fldno:Number) {
+        let field = this.fields[fldno];
+        return field ? field.getValue() : undefined;
+    }
 
     getComposite():ISOComponent {
         //noinspection JSValidateTypes
