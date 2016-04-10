@@ -55,6 +55,7 @@ export {
     LiteralInterpreter,
     NullPadder,
     NullPrefixer,
+    Prefixer,
     Padder,
     RightPadder,
     RightTPadder,
