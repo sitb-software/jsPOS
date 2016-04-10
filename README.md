@@ -58,5 +58,6 @@ JavaScript ISO8583. JavaScript version of [JPOS](http://jpos.org).
 
 # run test.
 
+    npm install -g babel-cli
     npm install
     npm test
