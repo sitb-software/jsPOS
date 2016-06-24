@@ -8,6 +8,7 @@ class AsciiPrefixer extends Prefixer {
 
     static LL = new AsciiPrefixer(2);
     static LLL = new AsciiPrefixer(3);
+    static LLLLLL = new AsciiPrefixer(6);
 
     nDigits;
 

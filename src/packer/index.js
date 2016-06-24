@@ -9,6 +9,7 @@ import IFA_BINARY from './IFA_BINARY';
 import IFA_BITMAP from './IFA_BITMAP';
 import IFA_LLCHAR from './IFA_LLCHAR';
 import IFA_LLLBINARY from './IFA_LLLBINARY';
+import IFA_LLLLLLBINARY from './IFA_LLLLLLBINARY';
 import IFA_LLLCHAR from './IFA_LLLCHAR';
 import IFA_LLNUM from './IFA_LLNUM';
 import IFA_NUMERIC from './IFA_NUMERIC';
@@ -36,6 +37,7 @@ export {
     IFA_BITMAP,
     IFA_LLCHAR,
     IFA_LLLBINARY,
+    IFA_LLLLLLBINARY,
     IFA_LLLCHAR,
     IFA_LLNUM,
     IFA_NUMERIC,
