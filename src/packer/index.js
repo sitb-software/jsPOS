@@ -12,7 +12,6 @@ import IFA_LLLBINARY from './IFA_LLLBINARY';
 import IFA_LLLLLLBINARY from './IFA_LLLLLLBINARY';
 import IFA_LLLCHAR from './IFA_LLLCHAR';
 import IFA_LLLLCHAR from './IFA_LLLLCHAR';
-import IFA_LLLLCHAR from './IFA_LLLLCHAR';
 import IFA_LLLLLCHAR from './IFA_LLLLLCHAR';
 import IFA_LLNUM from './IFA_LLNUM';
 import IFA_NUMERIC from './IFA_NUMERIC';
