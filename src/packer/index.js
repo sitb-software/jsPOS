@@ -11,6 +11,8 @@ import IFA_LLCHAR from './IFA_LLCHAR';
 import IFA_LLLBINARY from './IFA_LLLBINARY';
 import IFA_LLLLLLBINARY from './IFA_LLLLLLBINARY';
 import IFA_LLLCHAR from './IFA_LLLCHAR';
+import IFA_LLLLCHAR from './IFA_LLLLCHAR';
+import IFA_LLLLLCHAR from './IFA_LLLLLCHAR';
 import IFA_LLNUM from './IFA_LLNUM';
 import IFA_NUMERIC from './IFA_NUMERIC';
 import IFB_AMOUNT from './IFB_AMOUNT';
@@ -39,6 +41,8 @@ export {
     IFA_LLLBINARY,
     IFA_LLLLLLBINARY,
     IFA_LLLCHAR,
+    IFA_LLLLCHAR,
+    IFA_LLLLLCHAR,
     IFA_LLNUM,
     IFA_NUMERIC,
     IFB_AMOUNT,
