@@ -17,7 +17,7 @@ class AsciiInterpreter extends Interpreter {
 
     uninterpret(rawData, offset, length):String {
         let ret = new Array(length);
-        Arrays.arraycopy(rawData, offset, ret, 0, length);
+        Arrays.arraycopy(rawData, offset - 1, ret, 0, length);
         return ISOUtil.byte2str(ret, 0, ret.length);
     }
 
